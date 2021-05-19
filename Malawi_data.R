@@ -314,7 +314,7 @@ cbind(Estimate=coef(zip3),Exponentiate = exp(coef(zip3)),
       confint(zip3))
 #### Test de VUONG
 vuong(zip3,modpois2)
-
+ 
 ### Negative binomial
 library(MASS)
 negbin3 <- glm.nb(Average.No.of.Aphids~Ants.Presence+
