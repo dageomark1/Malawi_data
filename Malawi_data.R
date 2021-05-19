@@ -314,7 +314,7 @@ cbind(Estimate=coef(zip3),Exponentiate = exp(coef(zip3)),
       confint(zip3))
 #### Test de VUONG
 vuong(zip3,modpois2)
-
+ 
 ### Negative binomial
 library(MASS)
 negbin3 <- glm.nb(Average.No.of.Aphids~Ants.Presence+
@@ -339,8 +339,7 @@ vuong(zip3,zig3)
 
 
 ############ Logistic regression ###########
-logit_OBJ3 <- glm(Ants.Presence~Average.No.of.Aphids+
-                    Mat.Location+Month
+logit_OBJ3 <- glm(Ants.Presence~Mat.Location+Month
                     ,data = OBJ3,
                   family = binomial(link = "logit"))
 summary(logit_OBJ3)
