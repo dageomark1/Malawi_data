@@ -49,9 +49,9 @@ negbin <- glm.nb(Average.No.of.Aphids~Ants.Presence+
 
 
 ### Zero inflated negative binomial
-zinb1 <- zeroinfl(Average.No.of.Aphids~Ants.Presence+
-                    Mat.Location+Season|Ants.Presence+
-                    Mat.Location+Season,
+zinb1 <- zeroinfl(Average.No.of.Aphids~
+                    Mat.Location+Month|
+                    Mat.Location+Month,
                   data = OBJ1,dist = "negbin")
 
 summary(zinb1)
@@ -204,7 +204,7 @@ zig2 <- zeroinfl(Average.No.of.Aphids~Average.Temp+
 summary(zig2)
 
 ## Exponentiated coefficients and confident interval
-cbind(Estimate=coef(zig2),Exponentiate = exp(coef(zig2)), 
+cbind(Exponentiate = exp(coef(zig2)), 
       confint(zig2))
 
 #### Test de VUONG
