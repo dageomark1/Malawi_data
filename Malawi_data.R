@@ -310,7 +310,7 @@ zip3 <- zeroinfl(Average.No.of.Aphids~Ants.Presence|
 summary(zip3)
 
 ## Exponentiated coefficients and confident interval
-cbind(Estimate=coef(zip3),Exponentiate = exp(coef(zip3)),
+cbind(Exponentiate = exp(coef(zip3)),
       confint(zip3))
 #### Test de VUONG
 vuong(zip3,modpois2)
@@ -330,7 +330,7 @@ zig3 <- zeroinfl(Average.No.of.Aphids~Ants.Presence|Ants.Presence,
 summary(zig3)
 
 ## Exponentiated coefficients and confident interval
-cbind(Estimate=coef(zig3),Exponentiate = exp(coef(zig3)), 
+cbind(Exponentiate = exp(coef(zig3)), 
       confint(zig3))
 
 #### Test de VUONG
@@ -432,7 +432,7 @@ zip4 <- zeroinfl(Average.No.of.Aphids~Plant.Stage|Plant.Stage
 summary(zip4)
 
 ## Exponentiated coefficients and confident interval
-cbind(Estimate=coef(zip4),Exponentiate = exp(coef(zip4)),
+cbind(Exponentiate = exp(coef(zip4)),
       confint(zip4))
 #### Test de VUONG
 vuong(zip4,modpois4)
@@ -451,7 +451,7 @@ zig4 <- zeroinfl(Average.No.of.Aphids~Plant.Stage|Plant.Stage,
 summary(zig4)
 
 ## Exponentiated coefficients and confident interval
-cbind(Estimate=coef(zig4),Exponentiate = exp(coef(zig4)), 
+cbind(Exponentiate = exp(coef(zig4)), 
       confint(zig4))
 
 #### Test de VUONG
