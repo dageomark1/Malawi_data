@@ -339,7 +339,7 @@ vuong(zip3,zig3)
 
 
 ############ Logistic regression ###########
-logit_OBJ3 <- glm(Ants.Presence~Mat.Location+Month
+logit_OBJ3 <- glm(Ants.Presence~Mat.Location+Month+Average.No.of.Aphids
                     ,data = OBJ3,
                   family = binomial(link = "logit"))
 summary(logit_OBJ3)
@@ -367,6 +367,31 @@ hoslem.test(x = as.numeric(OBJ3$Ants.Presence)-1,fitted(logit_OBJ3,g=10))
 pred.prob <- predict(logit_OBJ3,type = "response")
 pred.mod <-  factor(ifelse(pred.prob > 0.5, "1", "0"))
 pred.mod
+
+### affiche la matrice de confusion avec le nom des modalités
+
+classify <- function(proba)ifelse(proba > 0.5, "Yes", "No")
+classified <- classify(predict(logit_OBJ3, OBJ3))
+confusion_matrix <- table(OBJ3$Ants.Presence, classified,
+      dnn=c("Observed", "predictions"))
+
+## affiche la précision
+(accuracy <- sum(diag(confusion_matrix))/sum(confusion_matrix))
+
+## specificity measure captures how often 
+#the model predicts a negative case correctly
+
+(specificity <- confusion_matrix[1,1]/
+    (confusion_matrix[1,1] + confusion_matrix[1,2]))
+
+
+## Sensitivity It captures how well, when the data has the
+# positive class, your model predicts this correctly
+
+(sensitivity <- confusion_matrix[2,2]/
+    (confusion_matrix[2,1] + confusion_matrix[2,2]))
+
+
 
 ## matrice de confusion
 mc <- table(OBJ3$Ants.Presence,pred.mod)
